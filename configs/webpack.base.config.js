@@ -1,3 +1,5 @@
+//base config
+
 const path = require('path');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -14,7 +16,6 @@ const pages_dir = `${PATHS.src}\\pug\\pages\\`;
 const pages = fs.readdirSync(pages_dir).filter(fileName => fileName.endsWith('.pug'));
 
 module.exports = {
-    mode: 'production',
     entry: './src/app.js',
     output: {
         filename: 'js/bundle.min.js'
