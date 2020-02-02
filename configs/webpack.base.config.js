@@ -5,27 +5,26 @@ const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 
 const PATHS = {
-    src: './src',
-    dist: './dist'
+    src: path.join(__dirname, '../src'),
+    dist: path.join(__dirname, '../dist')
 };
-const pages_dir = `${PATHS.src}\\pug\\pages\\`;
+const pages_dir = `${PATHS.src}/pug/pages/`;
 const pages = fs.readdirSync(pages_dir).filter(fileName => fileName.endsWith('.pug'));
 
 module.exports = {
-    entry: './src/app.js',
+    externals: {
+        paths: PATHS
+    },
+    entry: `${PATHS.src}/app.js`,
     output: {
-        filename: 'js/bundle.min.js'
+        filename: `js/[name].min.[hash].js`,
+        path: PATHS.dist,
+        publicPath: '/'
     },
     module: {
         rules: [
-            {
-                test: /\.(sass|scss)$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader', 'import-glob-loader']
-            },
             {
                 test: /\.pug$/,
                 loader: 'pug-loader'
@@ -43,9 +42,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new MiniCssExtractPlugin({
-            filename: '/css/[name].min.css',
-        }),
         ...pages.map(page => new HtmlWebpackPlugin({
             template: `${pages_dir}/${page}`,
             filename: `./${page.replace(/\.pug/,'.html')}`,
