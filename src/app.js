@@ -1,5 +1,3 @@
-import './app.scss';
+import './assets/sass/index.sass';
 
-import './assets/js/header.js';
-import './assets/js/footer.js';
-
+import './assets/js/index.js';
