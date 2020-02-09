@@ -7,21 +7,21 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
     mode: 'development',
-    // devServer: {
-    //     contentBase: baseWebpackConfig.externals.paths.src,
-    //     watchContentBase: true,
-    //     watchOptions: {
-    //         aggregateTimeout: 300,
-    //         poll: 1000,
-    //         // ignored: ['../src/**/*.sass', 'node_modules'],
-    //     },
-    //     hot: true,
-    //     open: true,
-    //     overlay: {
-    //         warnings: true,
-    //         errors: true
-    //     }
-    // },
+    devServer: {
+        contentBase: baseWebpackConfig.externals.paths.src + '/pug/',
+        watchContentBase: true,
+        watchOptions: {
+            aggregateTimeout: 300,
+            // poll: 1000,
+            // ignored: ['../src/**/*.sass', 'node_modules'],
+        },
+        hot: true,
+        open: true,
+        overlay: {
+            warnings: true,
+            errors: true
+        }
+    },
     module: {
         rules: [
             {
@@ -50,13 +50,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         new webpack.SourceMapDevToolPlugin({
             filename: '[file].map'
         }),
-        new BrowserSyncPlugin({
-          // browse to http://localhost:3000/ during development,
-          // ./public directory is being served
-          host: 'localhost',
-          port: 3000,
-          server: { baseDir: ['dist'] }
-        })
+        // new BrowserSyncPlugin({
+        //   // browse to http://localhost:3000/ during development,
+        //   // ./public directory is being served
+        //   host: 'localhost',
+        //   port: 3000,
+        //   server: { baseDir: ['dist'] }
+        // })
     ]
 })
 
