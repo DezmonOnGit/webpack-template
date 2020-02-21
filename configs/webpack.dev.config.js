@@ -7,21 +7,21 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const devWebpackConfig = merge(baseWebpackConfig, {
     mode: 'development',
-    devServer: {
-        contentBase: baseWebpackConfig.externals.paths.src + '/pug/',
-        watchContentBase: true,
-        watchOptions: {
-            aggregateTimeout: 300,
-            // poll: 1000,
-            // ignored: ['../src/**/*.sass', 'node_modules'],
-        },
-        hot: true,
-        open: true,
-        overlay: {
-            warnings: true,
-            errors: true
-        }
-    },
+    // devServer: {
+    //     contentBase: baseWebpackConfig.externals.paths.src + '/pug/',
+    //     watchContentBase: true,
+    //     watchOptions: {
+    //         aggregateTimeout: 300,
+    //         // poll: 1000,
+    //         // ignored: ['../src/**/*.sass', 'node_modules'],
+    //     },
+    //     hot: true,
+    //     open: true,
+    //     overlay: {
+    //         warnings: true,
+    //         errors: true
+    //     }
+    // },
     module: {
         rules: [
             {
