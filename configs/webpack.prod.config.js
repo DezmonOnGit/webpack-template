@@ -20,6 +20,10 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
                         options: { sourceMap: true }
                     },
                     {
+                       loader: 'postcss-loader',
+                       options: { sourceMap: true, config: { path: `./configs/postcss.config.js` } }
+                    },
+                    {
                         loader: 'sass-loader',
                         options: { sourceMap: true }
                     },
