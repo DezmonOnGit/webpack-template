@@ -1,12 +1,5 @@
-//libs
-import * as jquery from 'jquery';
-global.$ = global.jQuery = jquery;
+//vendor modules
+import vendors from './vendors/index';
 
-require("@fancyapps/fancybox");
-
-//modules
-import polyfill from './esm/polyfills/polyfills';
-
-import header from './esm/header';
-
-import footer from './esm/footer';
+//main modules
+import main from './main/index';
