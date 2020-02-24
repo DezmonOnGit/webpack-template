@@ -28,7 +28,7 @@ module.exports = {
         cacheGroups: {
           vendor: {
             name: "vendors",
-            test: /vendors/,
+            test: /[\\/](node_modules|assets[\\/]js[\\/]vendors)[\\/](.(?!.*\.css$))*$/,
             chunks: "all",
             enforce: true
           }
