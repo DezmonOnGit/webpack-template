@@ -20,6 +20,10 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
                         options: { sourceMap: true }
                     },
                     {
+                       loader: 'postcss-loader',
+                       options: { sourceMap: true, config: { path: `./configs/postcss.config.js` } }
+                    },
+                    {
                         loader: 'sass-loader',
                         options: { sourceMap: true }
                     },
@@ -36,7 +40,7 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
             filename: '[file].map'
         }),
         new MiniCssExtractPlugin({
-            filename: 'css/[name].min[contenthash].css',
+            filename: 'css/[name].min.[contenthash].css',
         })
     ]
 })

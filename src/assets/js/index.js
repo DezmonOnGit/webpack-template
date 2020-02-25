@@ -1,5 +1,5 @@
-import polyfill from './esm/polyfills/polyfills';
+//vendor modules
+import vendors from './vendors/index';
 
-import header from './esm/header';
-
-import footer from './esm/footer';
+//main modules
+import main from './main/index';

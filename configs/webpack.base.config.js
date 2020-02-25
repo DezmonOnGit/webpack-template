@@ -23,6 +23,18 @@ module.exports = {
         path: PATHS.dist,
         publicPath: '/'
     },
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            name: "vendors",
+            test: /[\\/](node_modules|assets[\\/]js[\\/]vendors)[\\/](.(?!.*\.css$))*$/,
+            chunks: "all",
+            enforce: true
+          }
+        }
+      }
+    },
     module: {
         rules: [
             {
